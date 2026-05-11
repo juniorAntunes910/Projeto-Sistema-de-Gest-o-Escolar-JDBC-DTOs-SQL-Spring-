@@ -22,7 +22,7 @@ public class AulaRepositoryImpl implements AulaRepository {
     }
 
     @Override
-    public AulaEntity createAluno(AulaRequestDTO aulaRequestDTO) throws SQLException {
+    public AulaEntity createAula(AulaRequestDTO aulaRequestDTO) throws SQLException {
         String command = """
                  INSERT INTO aula(
                  )
@@ -83,7 +83,7 @@ public class AulaRepositoryImpl implements AulaRepository {
     }
 
     @Override
-    public Optional<AulaEntity> readAlunoById(long id) throws SQLException {
+    public Optional<AulaEntity> readAulaById(long id) throws SQLException {
         String command = """
                 SELECT
                 (
@@ -111,7 +111,7 @@ public class AulaRepositoryImpl implements AulaRepository {
     }
 
     @Override
-    public void updateAluno(AulaRequestDTO aulaRequestDTO, long id) throws SQLException {
+    public void updateAula(AulaRequestDTO aulaRequestDTO, long id) throws SQLException {
         String command = """
                 UPDATE aula
                 SET turma_id = ?,

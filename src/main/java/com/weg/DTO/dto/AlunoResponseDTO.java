@@ -9,9 +9,5 @@ public record AlunoResponseDTO(
     String matricula,
     LocalDate dataNascimento
 ) {
-
-    public AlunoResponseDTO(long id2, String nome2, String matricula2, LocalDate dataNascimento2) {
-        //TODO Auto-generated constructor stub
-    }
-
+    
 }

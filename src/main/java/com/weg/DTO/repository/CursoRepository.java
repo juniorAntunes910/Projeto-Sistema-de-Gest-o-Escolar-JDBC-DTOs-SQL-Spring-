@@ -10,10 +10,10 @@ import com.weg.DTO.model.CursoEntity;
 public interface CursoRepository {
 
     
-    CursoEntity createAluno(CursoRequestDTO aCursoRequestDTO) throws SQLException;
+    CursoEntity createCurso(CursoRequestDTO aCursoRequestDTO) throws SQLException;
     List<CursoEntity> readAll() throws SQLException;
-    Optional<CursoEntity> readAlunoById(long id) throws SQLException;
-    void updateAluno( CursoRequestDTO aCursoRequestDTO, long id) throws SQLException;
+    Optional<CursoEntity> readCursoById(long id) throws SQLException;
+    void updateCurso( CursoRequestDTO aCursoRequestDTO, long id) throws SQLException;
     void deleteById(long id) throws SQLException;
 
 }

@@ -9,13 +9,13 @@ import com.weg.DTO.model.TurmaEntity;
 
 public interface TurmaRepository {
 
-    TurmaEntity createAluno(TurmaRequestDTO turmaRequestDTO) throws SQLException;
+    TurmaEntity createTurma(TurmaRequestDTO turmaRequestDTO) throws SQLException;
 
     List<TurmaEntity> readAll() throws SQLException;
 
-    Optional<TurmaEntity> readAlunoById(long id) throws SQLException;
+    Optional<TurmaEntity> readTurmaById(long id) throws SQLException;
 
-    void updateAluno(TurmaRequestDTO turmaRequestDTO, long id) throws SQLException;
+    void updateTurma(TurmaRequestDTO turmaRequestDTO, long id) throws SQLException;
 
     void deleteById(long id) throws SQLException;
 

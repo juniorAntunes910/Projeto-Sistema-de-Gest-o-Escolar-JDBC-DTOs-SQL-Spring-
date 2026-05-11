@@ -9,13 +9,13 @@ import com.weg.DTO.model.AulaEntity;
 
 public interface AulaRepository {
 
-    AulaEntity createAluno(AulaRequestDTO aulaRequestDTO) throws SQLException;
+    AulaEntity createAula(AulaRequestDTO aulaRequestDTO) throws SQLException;
 
     List<AulaEntity> readAll() throws SQLException;
 
-    Optional<AulaEntity> readAlunoById(long id) throws SQLException;
+    Optional<AulaEntity> readAulaById(long id) throws SQLException;
 
-    void updateAluno(AulaRequestDTO aulaRequestDTO, long id) throws SQLException;
+    void updateAula(AulaRequestDTO aulaRequestDTO, long id) throws SQLException;
 
     void deleteById(long id) throws SQLException;
 

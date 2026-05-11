@@ -21,7 +21,7 @@ public class CursoRepositoryImpl implements CursoRepository {
     }
 
     @Override
-    public CursoEntity createAluno(CursoRequestDTO aCursoRequestDTO) throws SQLException {
+    public CursoEntity createCurso(CursoRequestDTO aCursoRequestDTO) throws SQLException {
         String command = """
                 INSERT INTO curso
                 (
@@ -75,7 +75,7 @@ public class CursoRepositoryImpl implements CursoRepository {
     }
 
     @Override
-    public Optional<CursoEntity> readAlunoById(long id) throws SQLException {
+    public Optional<CursoEntity> readCursoById(long id) throws SQLException {
         String command = """
                 SELECT
                 (
@@ -101,7 +101,7 @@ public class CursoRepositoryImpl implements CursoRepository {
     }
 
     @Override
-    public void updateAluno(CursoRequestDTO aCursoRequestDTO, long id) throws SQLException {
+    public void updateCurso(CursoRequestDTO aCursoRequestDTO, long id) throws SQLException {
         String command = """
                 UPDATE aluno
                 SET nome = ?,

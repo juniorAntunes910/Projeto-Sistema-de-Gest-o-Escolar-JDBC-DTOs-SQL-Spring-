@@ -13,9 +13,9 @@ public interface ProfessorRepository {
 
     List<ProfessorEntity> readAll() throws SQLException;
 
-    Optional<ProfessorEntity> readAlunoById(long id) throws SQLException;
+    Optional<ProfessorEntity> readProfessorById(long id) throws SQLException;
 
-    void updateAluno(ProfessorRequestDTO professorRequestDTO, long id) throws SQLException;
+    void updateProfessor(ProfessorRequestDTO professorRequestDTO, long id) throws SQLException;
 
     void deleteById(long id) throws SQLException;
 

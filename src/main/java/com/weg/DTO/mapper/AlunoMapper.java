@@ -23,6 +23,7 @@ public class AlunoMapper {
         return new AlunoResponseDTO(
             aluno.getId(),
             aluno.getNome(),
+            aluno.getEmail(), 
             aluno.getMatricula(),
             aluno.getDataNascimento()
         );

@@ -5,14 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import com.weg.DTO.dto.NotaRequestDTO;
 import com.weg.DTO.infra.ConnectionFactory;
-import com.weg.DTO.model.AlunoEntity;
 import com.weg.DTO.model.NotaEntity;
 
 public class NotaRepositoryImpl implements NotaRepository {
@@ -23,7 +21,7 @@ public class NotaRepositoryImpl implements NotaRepository {
     }
 
     @Override
-    public NotaEntity createAluno(NotaRequestDTO notaRequestDTO) throws SQLException {
+    public NotaEntity createNota(NotaRequestDTO notaRequestDTO) throws SQLException {
         String command = """
                 INSERT INTO nota
                 (
@@ -84,7 +82,7 @@ public class NotaRepositoryImpl implements NotaRepository {
     }
 
     @Override
-    public Optional<NotaEntity> readAlunoById(long id) throws SQLException {
+    public Optional<NotaEntity> readNotaById(long id) throws SQLException {
         String command = """
                  SELECT
                  (
@@ -111,7 +109,7 @@ public class NotaRepositoryImpl implements NotaRepository {
     }
 
     @Override
-    public void updateAluno(NotaRequestDTO notaRequestDTO, long id) throws SQLException {
+    public void updateNota(NotaRequestDTO notaRequestDTO, long id) throws SQLException {
         String command = """
                 UPDATE aluno
                 SET aluno_id = ?,

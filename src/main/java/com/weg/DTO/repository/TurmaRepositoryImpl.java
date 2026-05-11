@@ -5,14 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import com.weg.DTO.dto.TurmaRequestDTO;
 import com.weg.DTO.infra.ConnectionFactory;
-import com.weg.DTO.model.AlunoEntity;
 import com.weg.DTO.model.TurmaEntity;
 
 public class TurmaRepositoryImpl implements TurmaRepository {
@@ -23,7 +21,7 @@ public class TurmaRepositoryImpl implements TurmaRepository {
     }
 
     @Override
-    public TurmaEntity createAluno(TurmaRequestDTO turmaRequestDTO) throws SQLException {
+    public TurmaEntity createTurma(TurmaRequestDTO turmaRequestDTO) throws SQLException {
         String command = """
                 INSERT INTO turma
                 (
@@ -83,7 +81,7 @@ public class TurmaRepositoryImpl implements TurmaRepository {
     }
 
     @Override
-    public Optional<TurmaEntity> readAlunoById(long id) throws SQLException {
+    public Optional<TurmaEntity> readTurmaById(long id) throws SQLException {
         String command = """
                 SELECT
                     id,
@@ -109,7 +107,7 @@ public class TurmaRepositoryImpl implements TurmaRepository {
     }
 
     @Override
-    public void updateAluno(TurmaRequestDTO turmaRequestDTO, long id) throws SQLException {
+    public void updateTurma(TurmaRequestDTO turmaRequestDTO, long id) throws SQLException {
         String command = """
                 UPDATE turma
                 SET nome = ?,

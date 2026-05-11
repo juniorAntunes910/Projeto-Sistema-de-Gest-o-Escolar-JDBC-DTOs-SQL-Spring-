@@ -81,7 +81,7 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
     }
 
     @Override
-    public Optional<ProfessorEntity> readAlunoById(long id) throws SQLException {
+    public Optional<ProfessorEntity> readProfessorById(long id) throws SQLException {
         String command = """
                  SELECT
                 (
@@ -110,7 +110,7 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
     }
 
     @Override
-    public void updateAluno(ProfessorRequestDTO professorRequestDTO, long id) throws SQLException {
+    public void updateProfessor(ProfessorRequestDTO professorRequestDTO, long id) throws SQLException {
         String command = """
                 UPDATE professor
                 SET nome = ?,
