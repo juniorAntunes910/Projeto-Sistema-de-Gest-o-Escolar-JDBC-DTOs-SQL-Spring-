@@ -7,10 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
 
 import com.weg.DTO.infra.ConnectionFactory;
 import com.weg.DTO.model.CursoProfessorEntity;
 
+
+@Repository
 public class CursoProfessorRepositoryImpl implements CursoProfessorRepository {
     private ConnectionFactory connectionFactory;
 

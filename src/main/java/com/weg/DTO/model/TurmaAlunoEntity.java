@@ -1,5 +1,8 @@
 package com.weg.DTO.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class TurmaAlunoEntity {
     private long turma_id;
     private long aluno_id;
@@ -9,6 +12,14 @@ public class TurmaAlunoEntity {
     }
 
     
+
+    
+    public TurmaAlunoEntity() {
+    }
+
+
+
+
     public long getTurma_id() {
         return turma_id;
     }

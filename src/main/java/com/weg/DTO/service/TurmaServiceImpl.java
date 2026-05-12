@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.weg.DTO.dto.TurmaRequestDTO;
 import com.weg.DTO.dto.TurmaResponseDTO;
 import com.weg.DTO.mapper.TurmaMapper;
@@ -18,6 +20,7 @@ import com.weg.DTO.repository.ProfessorRepository;
 import com.weg.DTO.repository.TurmaAlunoRepository;
 import com.weg.DTO.repository.TurmaRepository;
 
+@Service
 public class TurmaServiceImpl implements TurmaService {
     private TurmaMapper turmaMapper;
     private TurmaRepository turmaRepository;

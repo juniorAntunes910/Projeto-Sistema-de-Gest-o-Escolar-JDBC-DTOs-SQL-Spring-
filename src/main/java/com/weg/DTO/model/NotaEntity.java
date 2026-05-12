@@ -1,5 +1,8 @@
 package com.weg.DTO.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class NotaEntity {
     private long id;
     private long aluno_id;
@@ -16,6 +19,11 @@ public class NotaEntity {
         this.aluno_id = aluno_id;
         this.aula_id = aula_id;
         this.valor = valor;
+    }
+
+    
+
+    public NotaEntity() {
     }
 
     public long getId() {

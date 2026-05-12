@@ -1,5 +1,8 @@
 package com.weg.DTO.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ProfessorEntity {
     private long id;
     private String nome;
@@ -17,6 +20,12 @@ public class ProfessorEntity {
         this.nome = nome;
         this.email = email;
         this.disciplina = disciplina;
+    }
+
+
+
+    
+    public ProfessorEntity() {
     }
 
 

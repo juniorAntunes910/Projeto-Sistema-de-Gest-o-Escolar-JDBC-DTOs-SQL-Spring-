@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.weg.DTO.dto.AulaRequestDTO;
 import com.weg.DTO.dto.AulaResponseDTO;
 import com.weg.DTO.mapper.AulaMapper;
@@ -12,6 +14,8 @@ import com.weg.DTO.model.TurmaEntity;
 import com.weg.DTO.repository.AulaRepository;
 import com.weg.DTO.repository.TurmaRepository;
 
+
+@Service
 public class AulaServiceImpl implements AulaService {
     private AulaMapper aulaMapper;
     private AulaRepository aulaRepository;

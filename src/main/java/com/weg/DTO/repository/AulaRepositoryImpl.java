@@ -9,10 +9,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.weg.DTO.dto.AulaRequestDTO;
 import com.weg.DTO.infra.ConnectionFactory;
 import com.weg.DTO.model.AulaEntity;
 
+
+@Repository
 public class AulaRepositoryImpl implements AulaRepository {
     private ConnectionFactory connectionFactory;
 

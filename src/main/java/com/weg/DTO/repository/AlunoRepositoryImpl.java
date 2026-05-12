@@ -9,10 +9,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.weg.DTO.dto.AlunoRequestDTO;
 import com.weg.DTO.infra.ConnectionFactory;
 import com.weg.DTO.model.AlunoEntity;
 
+@Repository
 public class AlunoRepositoryImpl implements AlunoRepository {
     private ConnectionFactory connectionFactory;
 
@@ -22,6 +25,8 @@ public class AlunoRepositoryImpl implements AlunoRepository {
 
     @Override
     public AlunoEntity createAluno(AlunoRequestDTO alunoRequestDTO) throws SQLException {
+        System.out.println("Create Aluno Entrou ---------------------------------------------------");
+
         String command = """
                 INSERT INTO aluno
                 (
@@ -30,6 +35,7 @@ public class AlunoRepositoryImpl implements AlunoRepository {
                 matricula,
                 data_nascimento
                 )
+                VALUES
                 (
                 ?,
                 ?,
@@ -43,10 +49,12 @@ public class AlunoRepositoryImpl implements AlunoRepository {
             stmt.setString(3, alunoRequestDTO.matricula());
             stmt.setObject(4, alunoRequestDTO.dataNascimento());
             stmt.executeUpdate();
+            System.out.println("Criou o ALuno -----------------------------------------");
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next()) {
+                System.out.println("Entrei no rs");
                 return new AlunoEntity(
-                        rs.getLong(1),
+                        rs.getLong("id"),
                         alunoRequestDTO.nome(),
                         alunoRequestDTO.email(),
                         alunoRequestDTO.matricula(),
@@ -148,6 +156,31 @@ public class AlunoRepositoryImpl implements AlunoRepository {
             stmt.setLong(1, id);
             stmt.executeUpdate();
         }
+    }
+
+    @Override
+    public AlunoEntity readByEmail(String email) throws SQLException {
+        System.out.println("Read Email Entrou ---------------------------------------------------");
+        String command = """
+                SELECT
+                id, nome, email, matricula, data_nascimento
+                FROM aluno
+                WHERE email = ?
+                """;
+        try (Connection conn = connectionFactory.conexao();
+                PreparedStatement stmt = conn.prepareStatement(command)) {
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return new AlunoEntity(
+                        rs.getLong("id"),
+                        rs.getString("nome"),
+                        rs.getString("email"),
+                        rs.getString("matricula"),
+                        rs.getObject("data_nascimento", LocalDate.class));
+            }
+        }
+        return null;
     }
 
 }

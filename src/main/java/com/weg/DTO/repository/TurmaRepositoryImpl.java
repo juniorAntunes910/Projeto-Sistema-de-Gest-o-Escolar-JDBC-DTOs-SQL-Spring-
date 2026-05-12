@@ -8,10 +8,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.weg.DTO.dto.TurmaRequestDTO;
 import com.weg.DTO.infra.ConnectionFactory;
 import com.weg.DTO.model.TurmaEntity;
 
+
+@Repository
 public class TurmaRepositoryImpl implements TurmaRepository {
     private ConnectionFactory connectionFactory;
 

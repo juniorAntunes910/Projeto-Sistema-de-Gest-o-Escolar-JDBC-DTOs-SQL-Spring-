@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.weg.DTO.dto.NotaRequestDTO;
 import com.weg.DTO.dto.NotaResponseDTO;
 import com.weg.DTO.mapper.NotaMapper;
@@ -14,6 +16,8 @@ import com.weg.DTO.repository.AlunoRepository;
 import com.weg.DTO.repository.AulaRepository;
 import com.weg.DTO.repository.NotaRepository;
 
+
+@Service
 public class NotaServiceImpl implements NotaService {
     private NotaMapper notaMapper;
     private NotaRepository notaRepository;

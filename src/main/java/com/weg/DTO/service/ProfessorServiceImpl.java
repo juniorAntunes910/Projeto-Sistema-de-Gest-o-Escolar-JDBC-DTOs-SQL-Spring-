@@ -4,12 +4,15 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
+
 import com.weg.DTO.dto.ProfessorRequestDTO;
 import com.weg.DTO.dto.ProfessorResponseDTO;
 import com.weg.DTO.mapper.ProfessorMapper;
 import com.weg.DTO.model.ProfessorEntity;
 import com.weg.DTO.repository.ProfessorRepository;
 
+@Service
 public class ProfessorServiceImpl implements ProfessorService {
     private ProfessorMapper professorMapper;
     private ProfessorRepository professorRepository;

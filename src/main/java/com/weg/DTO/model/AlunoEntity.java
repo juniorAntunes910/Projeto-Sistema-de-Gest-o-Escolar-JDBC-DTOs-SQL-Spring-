@@ -2,6 +2,9 @@ package com.weg.DTO.model;
 
 import java.time.LocalDate;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class AlunoEntity {
     private Long id;
     private String nome;
@@ -23,6 +26,8 @@ public class AlunoEntity {
         this.dataNascimento = dataNascimento;
     }
 
+    public AlunoEntity() {
+    }
 
     public long getId() {
         return id;

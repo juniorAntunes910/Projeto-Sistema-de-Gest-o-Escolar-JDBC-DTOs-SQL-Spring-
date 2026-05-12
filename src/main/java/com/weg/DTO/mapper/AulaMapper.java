@@ -1,9 +1,12 @@
 package com.weg.DTO.mapper;
 
+import org.springframework.stereotype.Component;
+
 import com.weg.DTO.dto.AulaRequestDTO;
 import com.weg.DTO.dto.AulaResponseDTO;
 import com.weg.DTO.model.AulaEntity;
 
+@Component
 public class AulaMapper {
     public AulaEntity toAulaEntity(
         AulaRequestDTO aulaRequestDTO

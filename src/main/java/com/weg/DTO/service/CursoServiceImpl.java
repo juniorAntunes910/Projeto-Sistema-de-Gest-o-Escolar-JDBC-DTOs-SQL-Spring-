@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
 
 import com.weg.DTO.dto.CursoRequestDTO;
 import com.weg.DTO.dto.CursoResponseDTO;
@@ -16,6 +17,7 @@ import com.weg.DTO.repository.CursoProfessorRepository;
 import com.weg.DTO.repository.CursoRepository;
 import com.weg.DTO.repository.ProfessorRepository;
 
+@Service
 public class CursoServiceImpl implements CursoService {
     private CursoMapper cursoMapper;
     private CursoRepository cursoRepository;

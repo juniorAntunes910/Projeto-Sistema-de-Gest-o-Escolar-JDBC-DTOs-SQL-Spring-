@@ -4,15 +4,18 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
+
 import com.weg.DTO.dto.AlunoRequestDTO;
 import com.weg.DTO.dto.AlunoResponseDTO;
 import com.weg.DTO.mapper.AlunoMapper;
 import com.weg.DTO.model.AlunoEntity;
 import com.weg.DTO.repository.AlunoRepository;
 
+@Service
 public class AlunoServiceImpl implements AlunoService {
-    private AlunoMapper alunoMapper;
-    private AlunoRepository alunoRepository;
+    private final AlunoMapper alunoMapper;
+    private final AlunoRepository alunoRepository;
 
     public AlunoServiceImpl(AlunoMapper alunoMapper, AlunoRepository alunoRepository) {
         this.alunoMapper = alunoMapper;
@@ -22,6 +25,9 @@ public class AlunoServiceImpl implements AlunoService {
     @Override
     public AlunoResponseDTO createAluno(AlunoRequestDTO alunoRequestDTO) throws SQLException {
         AlunoEntity alunoEntity = alunoMapper.toEntity(alunoRequestDTO);
+        if(alunoRepository.readByEmail(alunoEntity.getEmail()) !=null){
+            throw new RuntimeException("Email já Cadastrado");
+        }
         alunoRepository.createAluno(alunoRequestDTO);
         return alunoMapper.toResponse(alunoEntity);
     }

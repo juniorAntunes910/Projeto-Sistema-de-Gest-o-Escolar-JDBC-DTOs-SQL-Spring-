@@ -2,6 +2,9 @@ package com.weg.DTO.model;
 
 import java.time.LocalDate;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class AulaEntity {
     private long id;
     private long turma_id;
@@ -19,6 +22,12 @@ public class AulaEntity {
         this.turma_id = turma_id;
         this.dataHora = dataHora;
         this.assunto = assunto;
+    }
+
+
+    
+
+    public AulaEntity() {
     }
 
 

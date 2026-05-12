@@ -1,5 +1,8 @@
 package com.weg.DTO.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CursoProfessorEntity {
     private long professorId;
     private long cursoId;
@@ -7,6 +10,14 @@ public class CursoProfessorEntity {
         this.professorId = professorId;
         this.cursoId = cursoId;
     }
+
+
+    
+    public CursoProfessorEntity() {
+    }
+
+
+
     public long getProfessorId() {
         return professorId;
     }

@@ -3,9 +3,12 @@ package com.weg.DTO.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.weg.DTO.dto.AlunoRequestDTO;
 import com.weg.DTO.dto.AlunoResponseDTO;
 
+@Service
 public interface AlunoService {
 
     AlunoResponseDTO createAluno(AlunoRequestDTO alunoRequestDTO) throws SQLException;

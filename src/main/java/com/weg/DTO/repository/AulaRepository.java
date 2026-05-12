@@ -3,9 +3,13 @@ package com.weg.DTO.repository;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.weg.DTO.dto.AulaRequestDTO;
 import com.weg.DTO.model.AulaEntity;
 
+
+@Repository
 public interface AulaRepository {
 
     AulaEntity createAula(AulaRequestDTO aulaRequestDTO) throws SQLException;
