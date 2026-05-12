@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import com.weg.DTO.dto.ProfessorRequestDTO;
 import com.weg.DTO.infra.ConnectionFactory;
@@ -81,7 +80,7 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
     }
 
     @Override
-    public Optional<ProfessorEntity> readProfessorById(long id) throws SQLException {
+    public ProfessorEntity readProfessorById(long id) throws SQLException {
         String command = """
                  SELECT
                 (
@@ -98,11 +97,11 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return Optional.of(new ProfessorEntity(
+                return new ProfessorEntity(
                         rs.getLong(1),
                         rs.getString("nome"),
                         rs.getString(("email")),
-                        rs.getString("disciplina")));
+                        rs.getString("disciplina"));
             }
             ;
         }

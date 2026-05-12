@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import com.weg.DTO.dto.TurmaRequestDTO;
 import com.weg.DTO.infra.ConnectionFactory;
@@ -81,7 +80,7 @@ public class TurmaRepositoryImpl implements TurmaRepository {
     }
 
     @Override
-    public Optional<TurmaEntity> readTurmaById(long id) throws SQLException {
+    public TurmaEntity readTurmaById(long id) throws SQLException {
         String command = """
                 SELECT
                     id,
@@ -96,11 +95,11 @@ public class TurmaRepositoryImpl implements TurmaRepository {
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return Optional.of(new TurmaEntity(
+                return new TurmaEntity(
                         rs.getLong(1),
                         rs.getString("nome"),
                         rs.getLong("curso_id"),
-                        rs.getLong("professor_id")));
+                        rs.getLong("professor_id"));
             }
         }
         return null;

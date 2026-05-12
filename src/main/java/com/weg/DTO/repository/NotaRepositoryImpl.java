@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import com.weg.DTO.dto.NotaRequestDTO;
 import com.weg.DTO.infra.ConnectionFactory;
@@ -82,7 +81,7 @@ public class NotaRepositoryImpl implements NotaRepository {
     }
 
     @Override
-    public Optional<NotaEntity> readNotaById(long id) throws SQLException {
+    public NotaEntity readNotaById(long id) throws SQLException {
         String command = """
                  SELECT
                  (
@@ -98,11 +97,11 @@ public class NotaRepositoryImpl implements NotaRepository {
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return Optional.of(new NotaEntity(
+                return new NotaEntity(
                         rs.getLong("id"),
                         rs.getLong("aluno_id"),
                         rs.getLong("aula_id"),
-                        rs.getDouble("valor")));
+                        rs.getDouble("valor"));
             }
         }
         return null;

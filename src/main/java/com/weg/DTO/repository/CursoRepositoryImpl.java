@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import com.weg.DTO.dto.CursoRequestDTO;
 import com.weg.DTO.infra.ConnectionFactory;
@@ -75,7 +74,7 @@ public class CursoRepositoryImpl implements CursoRepository {
     }
 
     @Override
-    public Optional<CursoEntity> readCursoById(long id) throws SQLException {
+    public CursoEntity readCursoById(long id) throws SQLException {
         String command = """
                 SELECT
                 (
@@ -91,10 +90,10 @@ public class CursoRepositoryImpl implements CursoRepository {
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return Optional.of(new CursoEntity(
+                return new CursoEntity(
                         rs.getLong(1),
                         rs.getString("nome"),
-                        rs.getString("codigo")));
+                        rs.getString("codigo"));
             }
         }
         return null;

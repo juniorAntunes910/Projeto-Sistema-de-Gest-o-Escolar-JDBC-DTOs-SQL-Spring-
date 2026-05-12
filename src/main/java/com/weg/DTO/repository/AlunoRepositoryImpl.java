@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import com.weg.DTO.dto.AlunoRequestDTO;
 import com.weg.DTO.infra.ConnectionFactory;
@@ -88,7 +87,7 @@ public class AlunoRepositoryImpl implements AlunoRepository {
     }
 
     @Override
-    public Optional<AlunoEntity> readAlunoById(long id) throws SQLException {
+    public AlunoEntity readAlunoById(long id) throws SQLException {
         String command = """
                 SELECT
                 (
@@ -106,12 +105,12 @@ public class AlunoRepositoryImpl implements AlunoRepository {
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return Optional.of(new AlunoEntity(
+                return new AlunoEntity(
                         rs.getLong(1),
                         rs.getString("nome"),
                         rs.getString("email"),
                         rs.getString("matricula"),
-                        rs.getObject("data_nascimento", LocalDate.class)));
+                        rs.getObject("data_nascimento", LocalDate.class));
             }
         }
         return null;

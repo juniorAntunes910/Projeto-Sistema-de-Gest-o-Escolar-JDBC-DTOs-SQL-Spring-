@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import com.weg.DTO.dto.AulaRequestDTO;
 import com.weg.DTO.infra.ConnectionFactory;
@@ -83,7 +82,7 @@ public class AulaRepositoryImpl implements AulaRepository {
     }
 
     @Override
-    public Optional<AulaEntity> readAulaById(long id) throws SQLException {
+    public AulaEntity readAulaById(long id) throws SQLException {
         String command = """
                 SELECT
                 (
@@ -100,11 +99,11 @@ public class AulaRepositoryImpl implements AulaRepository {
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return Optional.of(new AulaEntity(
+                return new AulaEntity(
                         rs.getLong(1),
                         rs.getLong("turma_id"),
                         rs.getObject("data_hora", LocalDate.class),
-                        rs.getString("assunto")));
+                        rs.getString("assunto"));
             }
         }
         return null;

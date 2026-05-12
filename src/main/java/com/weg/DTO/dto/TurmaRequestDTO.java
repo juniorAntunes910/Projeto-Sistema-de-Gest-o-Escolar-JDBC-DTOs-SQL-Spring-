@@ -6,7 +6,7 @@ public record TurmaRequestDTO(
     String nome,
     long cursoId,
     long professorId,
-    List<Integer> listAlunosIds
+    List<Long> listAlunosIds
 ) {
 
 }
