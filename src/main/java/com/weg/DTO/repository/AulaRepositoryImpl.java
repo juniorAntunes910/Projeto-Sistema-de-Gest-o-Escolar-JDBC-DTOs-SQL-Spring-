@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,12 +27,13 @@ public class AulaRepositoryImpl implements AulaRepository {
     @Override
     public AulaEntity createAula(AulaRequestDTO aulaRequestDTO) throws SQLException {
         String command = """
-                 INSERT INTO aula(
-                 )
+                 INSERT INTO aula
+                (
                 turma_id ,
                 data_hora ,
                 assunto
                 )
+                VALUES
                 (
                 ?,
                 ?,
@@ -61,12 +62,12 @@ public class AulaRepositoryImpl implements AulaRepository {
     public List<AulaEntity> readAll() throws SQLException {
         String command = """
                 SELECT
-                (
+                
                 id,
                 turma_id,
                 data_hora,
                 assunto
-                )
+                
                 FROM aula
                 """;
         try (Connection conn = connectionFactory.conexao();
@@ -78,7 +79,7 @@ public class AulaRepositoryImpl implements AulaRepository {
                         new AulaEntity(
                                 rs.getLong("id"),
                                 rs.getLong("turma_id"),
-                                rs.getObject("data_hora", LocalDate.class),
+                                rs.getObject("data_hora", LocalDateTime.class),
                                 rs.getString("assunto")));
             }
             return listAlunoEntities;
@@ -89,12 +90,12 @@ public class AulaRepositoryImpl implements AulaRepository {
     public AulaEntity readAulaById(long id) throws SQLException {
         String command = """
                 SELECT
-                (
+                
                 id,
                 turma_id,
                 data_hora,
                 assunto
-                )
+                
                 FROM aula
                 WHERE id = ?
                 """;
@@ -106,7 +107,7 @@ public class AulaRepositoryImpl implements AulaRepository {
                 return new AulaEntity(
                         rs.getLong(1),
                         rs.getLong("turma_id"),
-                        rs.getObject("data_hora", LocalDate.class),
+                        rs.getObject("data_hora", LocalDateTime.class),
                         rs.getString("assunto"));
             }
         }
@@ -119,7 +120,7 @@ public class AulaRepositoryImpl implements AulaRepository {
                 UPDATE aula
                 SET turma_id = ?,
                     data_hora = ?,
-                    assunto = ?,
+                    assunto = ?
                     WHERE id = ?
                             """;
         try (Connection conn = connectionFactory.conexao();

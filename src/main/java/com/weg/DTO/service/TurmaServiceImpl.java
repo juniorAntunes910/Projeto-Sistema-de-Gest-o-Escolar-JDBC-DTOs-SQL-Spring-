@@ -120,30 +120,40 @@ public class TurmaServiceImpl implements TurmaService {
 
     }
 
+
+
+    
     @Override
-    public void updateTurma(TurmaRequestDTO turmaRequestDTO, long id) throws SQLException {
-        TurmaEntity turmaEntity = turmaMapper.toEntity(turmaRequestDTO);
-        List<Long> alunos = turmaRequestDTO.listAlunosIds();
-        List<String> nomesAlunos = new ArrayList<>();
-        for (Long ids : alunos) {
-            AlunoEntity alunoEntity = alunoRepository.readAlunoById(ids);
-            if (alunoEntity == null) {
-                throw new RuntimeException("Aluno não existe");
-            }
-            nomesAlunos.add(alunoEntity.getNome());
-            TurmaAlunoEntity turmaAlunoEntity = new TurmaAlunoEntity(turmaEntity.getId(), id);
-            turmaAlunoRepository.createTurmaAluno(turmaAlunoEntity);
-        }
-        String nomeCurso = cursoRepository.readCursoById(turmaRequestDTO.cursoId()).getNome();
-        if (nomeCurso == null) {
-            throw new RuntimeException("O Curso não foi encontrado");
-        }
-        String nomeProfessor = professorRepository.readProfessorById(turmaRequestDTO.professorId()).getNome();
-        if (nomeProfessor == null) {
-            throw new RuntimeException("O Professor não foi encontrado");
-        }
-        turmaRepository.updateTurma(turmaRequestDTO, id);
+public void updateTurma(TurmaRequestDTO turmaRequestDTO, long id) throws SQLException {
+
+    TurmaEntity turmaExistente = turmaRepository.readTurmaById(id);
+
+    if (turmaExistente == null) {
+        throw new RuntimeException("Turma não existe");
     }
+
+    turmaRepository.updateTurma(turmaRequestDTO, id);
+
+    turmaAlunoRepository.deleteById(id);
+
+    List<Long> alunos = turmaRequestDTO.listAlunosIds();
+
+    for (Long ids : alunos) {
+
+        AlunoEntity alunoEntity = alunoRepository.readAlunoById(ids);
+
+        if (alunoEntity == null) {
+            throw new RuntimeException("Aluno não existe");
+        }
+
+        TurmaAlunoEntity turmaAlunoEntity =
+                new TurmaAlunoEntity(id, ids);
+
+        turmaAlunoRepository.createTurmaAluno(turmaAlunoEntity);
+    }
+}
+    
+    
 
     @Override
     public void deleteById(long id) throws SQLException {

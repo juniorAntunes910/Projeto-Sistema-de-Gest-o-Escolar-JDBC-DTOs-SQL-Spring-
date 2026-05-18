@@ -28,8 +28,8 @@ public class AlunoServiceImpl implements AlunoService {
         if(alunoRepository.readByEmail(alunoEntity.getEmail()) !=null){
             throw new RuntimeException("Email já Cadastrado");
         }
-        alunoRepository.createAluno(alunoRequestDTO);
-        return alunoMapper.toResponse(alunoEntity);
+        AlunoEntity alunoEntity2 = alunoRepository.createAluno(alunoRequestDTO);
+        return alunoMapper.toResponse(alunoEntity2);
     }
 
     @Override

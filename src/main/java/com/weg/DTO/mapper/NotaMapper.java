@@ -1,9 +1,12 @@
 package com.weg.DTO.mapper;
 
+import org.springframework.stereotype.Component;
+
 import com.weg.DTO.dto.NotaRequestDTO;
 import com.weg.DTO.dto.NotaResponseDTO;
 import com.weg.DTO.model.NotaEntity;
 
+@Component
 public class NotaMapper {
 
     public NotaEntity tEntity(

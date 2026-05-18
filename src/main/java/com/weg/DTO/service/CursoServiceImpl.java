@@ -99,7 +99,7 @@ public class CursoServiceImpl implements CursoService {
         if (!valido) {
             throw new RuntimeException("Professor não existe");
         }
-        cursoRepository.createCurso(aCursoRequestDTO);
+        cursoRepository.updateCurso(aCursoRequestDTO, id);
 
     }
 
@@ -119,6 +119,7 @@ public class CursoServiceImpl implements CursoService {
         if (!valido) {
             throw new RuntimeException("Professor não existe");
         }
+        cursoProfessorRepository.deleteById(id);
         cursoRepository.deleteById(id);
     }
 

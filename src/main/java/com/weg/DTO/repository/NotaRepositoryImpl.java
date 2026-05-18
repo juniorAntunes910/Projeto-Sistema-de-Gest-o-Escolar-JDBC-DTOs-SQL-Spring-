@@ -14,7 +14,6 @@ import com.weg.DTO.dto.NotaRequestDTO;
 import com.weg.DTO.infra.ConnectionFactory;
 import com.weg.DTO.model.NotaEntity;
 
-
 @Repository
 public class NotaRepositoryImpl implements NotaRepository {
     private ConnectionFactory connectionFactory;
@@ -30,13 +29,14 @@ public class NotaRepositoryImpl implements NotaRepository {
                 (
                 aluno_id,
                 aula_id,
-                valor,
+                valor
                 )
+                VALUES
                 (
                 ?,
                 ?,
-                ?,
-                ?)
+                ?
+                )
                 """;
         try (Connection conn = connectionFactory.conexao();
                 PreparedStatement stmt = conn.prepareStatement(command, Statement.RETURN_GENERATED_KEYS)) {
@@ -60,12 +60,12 @@ public class NotaRepositoryImpl implements NotaRepository {
     public List<NotaEntity> readAll() throws SQLException {
         String command = """
                  SELECT
-                 (
+
                  id,
                 aluno_id,
                  aula_id,
-                 valor,
-                 )
+                 valor
+
                  FROM nota
                  """;
         try (Connection conn = connectionFactory.conexao();
@@ -88,13 +88,14 @@ public class NotaRepositoryImpl implements NotaRepository {
     public NotaEntity readNotaById(long id) throws SQLException {
         String command = """
                  SELECT
-                 (
+                 
                  id,
                 aluno_id,
                  aula_id,
-                 valor,
-                 )
+                 valor
+                 
                  FROM nota
+                 WHERE id = ?
                  """;
         try (Connection conn = connectionFactory.conexao();
                 PreparedStatement stmt = conn.prepareStatement(command)) {
@@ -114,17 +115,18 @@ public class NotaRepositoryImpl implements NotaRepository {
     @Override
     public void updateNota(NotaRequestDTO notaRequestDTO, long id) throws SQLException {
         String command = """
-                UPDATE aluno
+                UPDATE nota
                 SET aluno_id = ?,
                     aula_id = ?,
-                    valor = ?,
-                    WHERE id = ?
+                    valor = ?
+                WHERE id = ?
                             """;
         try (Connection conn = connectionFactory.conexao();
                 PreparedStatement stmt = conn.prepareStatement(command)) {
             stmt.setLong(1, notaRequestDTO.alunoId());
             stmt.setLong(2, notaRequestDTO.aulaId());
             stmt.setDouble(3, notaRequestDTO.valor());
+            stmt.setLong(4, id);
             stmt.executeUpdate();
         }
     }

@@ -17,14 +17,22 @@ public class ProfessorServiceImpl implements ProfessorService {
     private ProfessorMapper professorMapper;
     private ProfessorRepository professorRepository;
 
-    @Override
-    public ProfessorResponseDTO createProfessor(ProfessorRequestDTO professorRequestDTO) throws SQLException {
-        ProfessorEntity ProfessorEntity = professorMapper.toEntity(professorRequestDTO);
-        professorRepository.createProfessor(professorRequestDTO);
-        return professorMapper.toResponse(ProfessorEntity);
+
+    
+
+    public ProfessorServiceImpl(ProfessorMapper professorMapper, ProfessorRepository professorRepository) {
+        this.professorMapper = professorMapper;
+        this.professorRepository = professorRepository;
     }
 
     @Override
+    public ProfessorResponseDTO createProfessor(ProfessorRequestDTO professorRequestDTO) throws SQLException {
+        ProfessorEntity ProfessorEntity = professorMapper.toEntity(professorRequestDTO);
+        ProfessorEntity professorEntity2 = professorRepository.createProfessor(professorRequestDTO);
+        return professorMapper.toResponse(professorEntity2);
+    }
+
+    @Override 
     public List<ProfessorResponseDTO> readAll() throws SQLException {
         List<ProfessorEntity> list = professorRepository.readAll();
         if (list.isEmpty()) {

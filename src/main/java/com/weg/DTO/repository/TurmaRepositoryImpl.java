@@ -30,8 +30,9 @@ public class TurmaRepositoryImpl implements TurmaRepository {
                 (
                 nome,
                 curso_id,
-                professor_id,
+                professor_id
                 )
+                VALUES
                 (
                 ?,
                 ?,
@@ -63,7 +64,7 @@ public class TurmaRepositoryImpl implements TurmaRepository {
                 id,
                 nome,
                 curso_id,
-                professor_id,
+                professor_id
 
                 FROM turma
                 """;
@@ -90,7 +91,7 @@ public class TurmaRepositoryImpl implements TurmaRepository {
                     id,
                     nome,
                     curso_id,
-                    professor_id,
+                    professor_id
                 FROM turma
                 WHERE id = ?
                        """;
@@ -115,7 +116,7 @@ public class TurmaRepositoryImpl implements TurmaRepository {
                 UPDATE turma
                 SET nome = ?,
                     curso_id = ?,
-                    professor_id = ?,
+                    professor_id = ?
                     WHERE id = ?
                             """;
         try (Connection conn = connectionFactory.conexao();

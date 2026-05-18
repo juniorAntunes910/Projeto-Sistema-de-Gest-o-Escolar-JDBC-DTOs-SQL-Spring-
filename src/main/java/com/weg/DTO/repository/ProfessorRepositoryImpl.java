@@ -25,17 +25,18 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
     @Override
     public ProfessorEntity createProfessor(ProfessorRequestDTO professorRequestDTO) throws SQLException {
         String command = """
-                INSERT INTO professor
-                (
-                nome,
-                email,
-                disciplina
-                                )
-                (
-                ?,
-                ?,
-                ?)
-                """;
+                            INSERT INTO professor
+                            (
+                            nome,
+                            email,
+                            disciplina
+                            )
+                            VALUES
+                            (
+                            ?,
+                            ?,
+                            ?)
+                            """;
         try (Connection conn = connectionFactory.conexao();
                 PreparedStatement stmt = conn.prepareStatement(command, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, professorRequestDTO.nome());
@@ -58,12 +59,12 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
     public List<ProfessorEntity> readAll() throws SQLException {
         String command = """
                 SELECT
-                (
+                
                 id,
                 nome,
                 email,
                 disciplina
-                )
+                
                 FROM professor
                 """;
         try (Connection conn = connectionFactory.conexao();
@@ -86,12 +87,12 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
     public ProfessorEntity readProfessorById(long id) throws SQLException {
         String command = """
                  SELECT
-                (
+                
                 id,
                 nome,
                 email,
                 disciplina
-                )
+                
                 FROM professor
                 WHERE id = ?
                 """;

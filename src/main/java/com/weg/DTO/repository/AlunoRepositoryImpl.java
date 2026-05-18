@@ -68,13 +68,13 @@ public class AlunoRepositoryImpl implements AlunoRepository {
     public List<AlunoEntity> readAll() throws SQLException {
         String command = """
                 SELECT
-                (
+                
                 id,
                 nome,
                 email,
                 matricula,
                 data_nascimento
-                )
+                
                 FROM aluno
                 """;
         try (Connection conn = connectionFactory.conexao();
@@ -98,13 +98,13 @@ public class AlunoRepositoryImpl implements AlunoRepository {
     public AlunoEntity readAlunoById(long id) throws SQLException {
         String command = """
                 SELECT
-                (
+                
                 id,
                 nome,
                 email,
                 matricula,
                 data_nascimento
-                )
+                
                 FROM aluno
                 WHERE id = ?
                 """;

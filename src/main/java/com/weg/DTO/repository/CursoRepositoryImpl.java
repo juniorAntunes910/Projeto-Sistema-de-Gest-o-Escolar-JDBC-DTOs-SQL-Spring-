@@ -28,8 +28,9 @@ public class CursoRepositoryImpl implements CursoRepository {
                 INSERT INTO curso
                 (
                 nome,
-                codigo,
+                codigo
                 )
+                VALUES
                 (
                 ?,
                 ?)
@@ -54,11 +55,11 @@ public class CursoRepositoryImpl implements CursoRepository {
     public List<CursoEntity> readAll() throws SQLException {
         String command = """
                 SELECT
-                (
+                
                    id,
                    nome,
-                   codigo,
-                )
+                   codigo
+                
                 FROM curso
                 """;
         try (Connection conn = connectionFactory.conexao();
@@ -80,11 +81,11 @@ public class CursoRepositoryImpl implements CursoRepository {
     public CursoEntity readCursoById(long id) throws SQLException {
         String command = """
                 SELECT
-                (
+                
                    id,
                    nome,
-                   codigo,
-                )
+                   codigo
+                
                 FROM curso
                 WHERE ID = ?
                 """;

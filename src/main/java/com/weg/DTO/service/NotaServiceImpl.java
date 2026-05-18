@@ -24,6 +24,17 @@ public class NotaServiceImpl implements NotaService {
     private AlunoRepository alunoRepository;
     private AulaRepository aulaRepository;
 
+
+    
+
+    public NotaServiceImpl(NotaMapper notaMapper, NotaRepository notaRepository, AlunoRepository alunoRepository,
+            AulaRepository aulaRepository) {
+        this.notaMapper = notaMapper;
+        this.notaRepository = notaRepository;
+        this.alunoRepository = alunoRepository;
+        this.aulaRepository = aulaRepository;
+    }
+
     @Override
     public NotaResponseDTO createNota(NotaRequestDTO notaRequestDTO) throws SQLException {
         NotaEntity notaEntity = notaMapper.tEntity(notaRequestDTO);

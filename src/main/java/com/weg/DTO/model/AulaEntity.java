@@ -1,6 +1,7 @@
 package com.weg.DTO.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Component;
 
@@ -8,16 +9,16 @@ import org.springframework.stereotype.Component;
 public class AulaEntity {
     private long id;
     private long turma_id;
-    private LocalDate dataHora;
+    private LocalDateTime dataHora;
     private String assunto;
-    public AulaEntity(long turma_id, LocalDate dataHora, String assunto) {
+    public AulaEntity(long turma_id, LocalDateTime dataHora, String assunto) {
         this.turma_id = turma_id;
         this.dataHora = dataHora;
         this.assunto = assunto;
     }
 
     
-    public AulaEntity(long id, long turma_id, LocalDate dataHora, String assunto) {
+    public AulaEntity(long id, long turma_id, LocalDateTime dataHora, String assunto) {
         this.id = id;
         this.turma_id = turma_id;
         this.dataHora = dataHora;
@@ -43,10 +44,10 @@ public class AulaEntity {
     public void setTurma_id(long turma_id) {
         this.turma_id = turma_id;
     }
-    public LocalDate getDataHora() {
+    public LocalDateTime getDataHora() {
         return dataHora;
     }
-    public void setDataHora(LocalDate dataHora) {
+    public void setDataHora(LocalDateTime dataHora) {
         this.dataHora = dataHora;
     }
     public String getAssunto() {
