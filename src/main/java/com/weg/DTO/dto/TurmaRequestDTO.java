@@ -11,7 +11,6 @@ public record TurmaRequestDTO(
     long cursoId,
     @NotBlank(message = "O id do professor é obrigatorio")
     long professorId,
-    @NotBlank(message = "A lista de Alunos é obrigatorio")
     List<Long> listAlunosIds
 ) {
 
